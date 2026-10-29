@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmBridge AI | Farm to Consumer</title>
+
+<style>
+:root {
+  --bg: #101410;
+  --card: #1b231c;
+  --green: #a6e66b;
+  --text: #f4f7f0;
+  --muted: #a7b2a5;
+  --border: #344234;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  border-bottom: 1px solid var(--border);
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--green);
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--green);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 16px;
+  background: var(--green);
+  color: #14200f;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+.hero {
+  padding: 65px 7%;
+  background: linear-gradient(120deg, #1c2b1d, #101410);
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.2;
+  max-width: 650px;
+  margin: 15px 0;
+}
+
+.hero h1 span {
+  color: var(--green);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 570px;
+  margin-bottom: 25px;
+}
+
+.tag {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+section {
+  padding: 45px 7%;
+  scroll-margin-top: 20px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-size: 27px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+input, select {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.filters input {
+  flex: 2 1 220px;
+}
+
+.filters select {
+  flex: 1 1 160px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.product, .panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 20px;
+}
+
+.product-icon {
+  font-size: 45px;
+  background: #283629;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.product h3 {
+  margin-bottom: 4px;
+}
+
+.product .muted {
+  font-size: 14px;
+}
+
+.price {
+  color: var(--green);
+  font-size: 22px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.product button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+.stat strong {
+  display: block;
+  font-size: 25px;
+  color: var(--green);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+form {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.result {
+  border-left: 3px solid var(--green);
+  background: #222e21;
+  border-radius: 6px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.list {
+  margin: 12px 0 0 20px;
+  color: var(--muted);
+}
+
+.full {
+  width: 100%;
+  margin-top: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#notice {
+  color: var(--green);
+  margin-top: 12px;
+  min-height: 24px;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 18px 5%;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  section {
+    padding: 35px 5%;
+  }
+
+  .hero {
+    padding: 45px 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌱 FarmBridge AI</div>
+
+  <nav>
+    <a href="#market">Marketplace</a>
+    <a href="#farmer">Sell Produce</a>
+    <a href="#insights">AI Insights</a>
+    <a href="#cart">Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="tag">FRESH FROM FARM TO TABLE</div>
+
+  <h1>Fair prices for farmers.<br>
+  <span>Fresh produce for everyone.</span></h1>
+
+  <p>
+    A digital marketplace connecting farmers directly with
+    consumers and bulk buyers, with smarter demand planning
+    and efficient delivery routes.
+  </p>
+
+  <button onclick="document.getElementById('market').scrollIntoView({behavior:'smooth'})">
+    Explore Marketplace →
+  </button>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="productCount">6</strong>
+      Products listed
+    </div>
+    <div class="stat">
+      <strong id="farmerCount">6</strong>
+      Sample suppliers
+    </div>
+    <div class="stat">
+      <strong>AI</strong>
+      Demand insights
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="section-head">
+    <div>
+      <div class="tag">DIRECT MARKET ACCESS</div>
+      <h2>Explore fresh produce</h2>
+    </div>
+    <span class="muted">Sample marketplace data</span>
+  </div>
+
+  <div class="filters">
+    <input id="search" placeholder="Search vegetables, fruits..."
+           oninput="renderProducts()">
+
+    <select id="category" onchange="renderProducts()">
+      <option value="All">All categories</option>
+      <option value="Vegetables">Vegetables</option>
+      <option value="Fruits">Fruits</option>
+      <option value="Grains">Grains</option>
+    </select>
+
+    <select id="sort" onchange="renderProducts()">
+      <option value="default">Sort by</option>
+      <option value="low">Price: low to high</option>
+      <option value="high">Price: high to low</option>
+    </select>
+  </div>
+
+  <div class="grid" id="products"></div>
+  <p id="empty" class="muted" hidden>No matching products found.</p>
+</section>
+
+<section id="farmer">
+  <div class="section-head">
+    <div>
+      <div class="tag">FOR FARMERS</div>
+      <h2>List your produce</h2>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <h3>Add a product</h3>
+      <p class="muted">Enter product details to list produce in this demo.</p>
+
+      <form id="productForm">
+        <input id="pName" placeholder="Product name" required>
+
+        <select id="pCategory" required>
+          <option value="">Choose category</option>
+          <option>Vegetables</option>
+          <option>Fruits</option>
+          <option>Grains</option>
+        </select>
+
+        <input id="pPrice" type="number" min="1"
+               placeholder="Price per kg (₹)" required>
+
+        <input id="pQty" type="number" min="1"
+               placeholder="Available quantity (kg)" required>
+
+        <input id="pFarmer" placeholder="Farmer / farm name" required>
+
+        <button type="submit">Add Product</button>
+      </form>
+
+      <p id="notice" role="status"></p>
+    </div>
+
+    <div class="panel">
+      <h3>Why sell directly?</h3>
+      <ul class="list">
+        <li>Reach consumers and bulk buyers.</li>
+        <li>Display prices and available quantities.</li>
+        <li>Receive orders through one platform.</li>
+        <li>Understand demand using sales insights.</li>
+        <li>Reduce avoidable distribution costs.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="insights">
+  <div class="section-head">
+    <div>
+      <div class="tag">SMART AGRICULTURE</div>
+      <h2>AI demand insights</h2>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <h3>Demand forecast demo</h3>
+      <p class="muted">
+        Select a product to view a sample demand estimate.
+        This is illustrative data, not a trained AI prediction.
+      </p>
+
+      <select id="forecastProduct" class="full">
+        <option>Tomatoes</option>
+        <option>Potatoes</option>
+        <option>Onions</option>
+        <option>Mangoes</option>
+        <option>Rice</option>
+      </select>
+
+      <button class="full" onclick="forecast()">Generate Estimate</button>
+
+      <div id="forecastResult" class="result" hidden></div>
+    </div>
+
+    <div class="panel">
+      <h3>Delivery route planning</h3>
+      <p class="muted">
+        Enter delivery locations to prepare a sample route plan.
+        Real road distances require a routing service.
+      </p>
+
+      <form id="routeForm">
+        <input id="origin" placeholder="Farm / starting location" required>
+        <input id="destination" placeholder="Buyer / destination" required>
+        <button type="submit">Plan Delivery</button>
+      </form>
+
+      <div id="routeResult" class="result" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section id="cart">
+  <div class="section-head">
+    <div>
+      <div class="tag">YOUR SELECTION</div>
+      <h2>Shopping cart</h2>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div id="cartItems" class="muted">Your cart is empty.</div>
+    <h3 style="margin-top:15px">
+      Total: <span id="cartTotal">₹0</span>
+    </h3>
+    <button class="full" onclick="checkout()">Place Demo Order</button>
+    <p id="checkoutMessage" class="muted" style="margin-top:10px"></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  FarmBridge AI · Connecting farmers and buyers directly.<br>
+  Student project prototype · Uses sample data.
+</footer>
+
+<script>
+const products = [
+  {id:1, name:"Tomatoes", category:"Vegetables", price:25,
+   qty:100, farmer:"Green Valley Farm", icon:"🍅"},
+  {id:2, name:"Potatoes", category:"Vegetables", price:30,
+   qty:150, farmer:"Sunrise Farms", icon:"🥔"},
+  {id:3, name:"Onions", category:"Vegetables", price:35,
+   qty:120, farmer:"Village Harvest", icon:"🧅"},
+  {id:4, name:"Mangoes", category:"Fruits", price:60,
+   qty:80, farmer:"Fresh Fields", icon:"🥭"},
+  {id:5, name:"Bananas", category:"Fruits", price:40,
+   qty:90, farmer:"Green Valley Farm", icon:"🍌"},
+  {id:6, name:"Rice", category:"Grains", price:55,
+   qty:200, farmer:"Sunrise Farms", icon:"🌾"}
+];
+
+let cart = {};
+
+function renderProducts() {
+  const search = document.getElementById("search").value.toLowerCase();
+  const category = document.getElementById("category").value;
+  const sort = document.getElementById("sort").value;
+
+  let filtered = products.filter(p =>
+    p.name.toLowerCase().includes(search) &&
+    (category === "All" || p.category === category)
+  );
+
+  if (sort === "low") filtered.sort((a,b) => a.price-b.price);
+  if (sort === "high") filtered.sort((a,b) => b.price-a.price);
+
+  document.getElementById("empty").hidden = filtered.length > 0;
+
+  document.getElementById("products").innerHTML = filtered.map(p => `
+    <article class="product">
+      <div class="product-icon">${p.icon}</div>
+      <p class="tag">${p.category}</p>
+      <h3>${escapeHTML(p.name)}</h3>
+      <p class="muted">${escapeHTML(p.farmer)}</p>
+      <p class="muted">${p.qty} kg available</p>
+      <div class="price">₹${p.price}<span class="muted"> / kg</span></div>
+      <button onclick="addToCart(${p.id})">Add to Cart</button>
+    </article>
+  `).join("");
+
+  document.getElementById("productCount").textContent = products.length;
+  document.getElementById("farmerCount").textContent =
+    new Set(products.map(p => p.farmer)).size;
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  }[ch]));
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+}
+
+function renderCart() {
+  const entries = Object.entries(cart).filter(([id,qty]) => qty > 0);
+  const count = entries.reduce((sum,[id,qty]) => sum+qty, 0);
+  const total = entries.reduce((sum,[id,qty]) => {
+    const product = products.find(p => p.id === Number(id));
+    return sum + (product ? product.price*qty : 0);
+  }, 0);
+
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = "₹" + total;
+
+  document.getElementById("cartItems").innerHTML = entries.length
+    ? entries.map(([id,qty]) => {
+        const p = products.find(item => item.id === Number(id));
+        return `<p>${escapeHTML(p.name)} × ${qty}
+          <button onclick="changeQty(${id},-1)">−</button>
+          <button onclick="changeQty(${id},1)">+</button>
+          <span> ₹${p.price*qty}</span></p>`;
+      }).join("")
+    : "Your cart is empty.";
+
+  document.getElementById("checkoutMessage").textContent = "";
+}
+
+function changeQty(id, amount) {
+  cart[id] = Math.max(0, (cart[id] || 0) + amount);
+  renderCart();
+}
+
+document.getElementById("productForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const name = document.getElementById("pName").value.trim();
+  const category = document.getElementById("pCategory").value;
+  const price = Number(document.getElementById("pPrice").value);
+  const qty = Number(document.getElementById("pQty").value);
+  const farmer = document.getElementById("pFarmer").value.trim();
+
+  if (!name || !farmer || price <= 0 || qty <= 0) return;
+
+  const icons = {
+    Vegetables:"🥬", Fruits:"🍎", Grains:"🌾"
+  };
+
+  products.push({
+    id:Date.now(), name, category, price, qty, farmer,
+    icon:icons[category] || "🌱"
+  });
+
+  e.target.reset();
+  document.getElementById("notice").textContent =
+    "Product added successfully to this demo marketplace.";
+
+  renderProducts();
+});
+
+function forecast() {
+  const name = document.getElementById("forecastProduct").value;
+
+  // Illustrative estimate only; replace with a trained model.
+  const estimates = {
+    Tomatoes:"High",
+    Potatoes:"Medium",
+    Onions:"High",
+    Mangoes:"Medium",
+    Rice:"High"
+  };
+
+  const result = document.getElementById("forecastResult");
+  result.hidden = false;
+  result.innerHTML = `<strong>${escapeHTML(name)}</strong><br>
+    Illustrative demand level: <strong>${estimates[name]}</strong><br>
+    <span class="muted">Demo estimate only. Real forecasting needs
+    historical sales and seasonal data.</span>`;
+}
+
+document.getElementById("routeForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const from = document.getElementById("origin").value.trim();
+  const to = document.getElementById("destination").value.trim();
+  const result = document.getElementById("routeResult");
+
+  result.hidden = false;
+  result.innerHTML = `<strong>Sample delivery plan</strong><br>
+    Start: ${escapeHTML(from)}<br>
+    Destination: ${escapeHTML(to)}<br>
+    <span class="muted">Connect a routing service to calculate
+    real roads, distances, and delivery times.</span>`;
+});
+
+function checkout() {
+  const hasItems = Object.values(cart).some(qty => qty > 0);
+  document.getElementById("checkoutMessage").textContent = hasItems
+    ? "Demo order prepared. No payment or real order was submitted."
+    : "Add a product to your cart first.";
+}
+
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
